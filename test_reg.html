@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <title>A Demo</title>
+        <meta  name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+        <script src="jquery-3.1.0.min.js"></script>
+    </head>
+    <style type="text/css">
+        body, div{margin:0;padding:0;}
+    </style>
+    <body>
+        <div class="up">up</div>
+        
+        <script type="text/javascript">
+            // 正则表达式练习
+            console.error('search...匹配的子串的起始位置。如果没有找到任何匹配的子串，则返回-1');
+            var str1 = "hello world,hello world";
+            console.log(str1.search(/hello/g)); // 全局匹配，大小写敏感
+            console.log(str1.search(/HEllo/i)); // 忽略大小写
+            console.log(str1.search(/hEllo/m)); // 多行匹配, 大小写敏感
+
+
+            console.error('match...在字符串内检索指定的值');
+            var str2 = "hello world";
+            console.log(str2.match("hello")); // ["hello", index: 0, input: "hello world"]
+            console.log(str2.match("Hello")); // null
+            console.log(str2.match(/hello/)); // ["hello", index: 0, input: "hello world"]
+            // 全局匹配
+            var str3="1 plus 2 equal 3"
+            console.log(str3.match(/\d+/g)); //["1", "2", "3"]
+
+
+            console.error('replace...该方法用于在字符串中使用一些字符替换另一些字符');
+            var str4 = "hello world";
+            // 替换字符串
+            var s1 = str4.replace("hello","a");
+            console.log(s1);// a world
+            // 使用正则替换字符串
+            var s2 = str4.replace(/hello/,"b");
+            console.log(s2); // b world
+            // 使用正则全局替换 字符串
+            var s3 = str4.replace(/l/g,'');
+            console.log(s3); // heo word
+            // $1,$2 代表的是第一个和第二个子表达式相匹配的文本
+            // 子表达式需要使用小括号括起来,代表的含义是分组
+            var name = "longen,yunxi";
+            var s4 = name.replace(/(\w+)\s*,\s*(\w+)/,"$2 $1");
+            console.log(s4); // "yunxi,longen"
+            // $& 是与RegExp相匹配的子字符串
+            var name = "hello I am a chinese people, and I am a good man.";
+            var regexp = /am/g;
+            if(regexp.test(name)) {
+                //返回正则表达式匹配项的字符串
+                console.log(RegExp['$&']);  // am
+                //返回被搜索的字符串中从第一个匹配位置开始到字符串结尾之间的字符。
+                console.log(RegExp["$'"]); // a chinese people, and I am a good man.
+                //返回被查找的字符串从字符串开始的位置到第一个匹配之前的位置之间的字符。
+                console.log(RegExp['$`']);  // hello I 
+                // 返回任何正则表达式查找过程中最后括号的子匹配。
+                console.log(RegExp['$+']); // 空字符串
+                //返回任何正则表达式搜索过程中的最后匹配的字符。
+                console.log(RegExp['$_']);  // hello I am a chinese people
+            }
+            // replace 第二个参数也可以是一个function 函数
+            var name2 = "123sdasadsr44565dffghg987gff33234";
+            name2.replace(/\d+/g,function(v){
+                console.log(v); 
+                /*
+                 * 第一次打印123
+                 * 第二次打印44565
+                 * 第三次打印987
+                 * 第四次打印 33234
+                 */
+            });
+            /*
+             * 如下函数，回调函数参数一共有四个
+             * 第一个参数的含义是 匹配的字符串
+             * 第二个参数的含义是 正则表达式分组内容，没有分组的话，就没有该参数,
+             * 如果没有该参数的话那么第四个参数就是undefined
+             * 第三个参数的含义是 匹配项在字符串中的索引index
+             * 第四个参数的含义是 原字符串
+             */
+             name2.replace(/(\d+)/g,function(a,b,c,d){
+                console.log(a);
+                console.log(b);
+                console.log('index='+c);
+                console.log(d);
+                /*
+                 * 如上会执行四次，值分别如下(正则使用小括号，代表分组)：
+                 * 第一次： 123,123,0,123sdasadsr44565dffghg987gff33234
+                 * 第二次： 44565,44565,11,123sdasadsr44565dffghg987gff33234
+                 * 第三次： 987,987,22,123sdasadsr44565dffghg987gff33234
+                 * 第四次： 33234,33234,28,123sdasadsr44565dffghg987gff33234
+                 */
+             });
+
+
+            console.error('split...该方法把一个字符串分割成字符串数组');
+            var str = "what are you doing?";
+            // 以" "分割字符串
+            console.log(str.split(" "));
+            // 打印 ["what", "are", "you", "doing?"]
+            // 以 "" 分割字符串
+            console.log(str.split(""));
+            /*
+             * 打印：["w", "h", "a", "t", " ", "a", "r", "e", " ", "y", "o", "u", " ", "d", "o", "i", "n", 
+             * "g", "?"]
+             */
+            // 指定返回数组的最大长度为3
+            console.log(str.split("",3));
+            // 打印 ["w", "h", "a"]
+            
+
+            console.error('RegExp对象方法_test...用于检测一个字符串是否匹配某个模式');
+            var str = "longen and yunxi";
+            console.log(/longen/.test(str)); // true
+            console.log(/longlong/.test(str)); //false
+            // 或者创建RegExp对象模式
+            var regexp = new RegExp("longen");
+            console.log(regexp.test(str)); // true
+
+            console.error('RegExp对象方法_exec...用于检测一个字符串是否匹配某个模式');
+            var str = "longen and yunxi longen hahaha";
+            console.log(new RegExp(/longen/g).exec(str));
+            console.log(str.match(/longen/));
+            console.log(str.match(/longen/g));
+            // 打印 ["longen", index: 0, input: "longen and yunxi"]
+            
+
+            console.error('match...用于检测一个字符串是否匹配某个模式');
+            var str="aa<p>one</p>bb<div>two</div>cc ";
+            // 匹配4个数字的 匹配到1000和10000
+            console.log(str.match('<(?!/?p\b)[^>]+>')); //["1000", "1000"]
+            var str2 = "<ul><li>aaa</li><li>bbb</li></ul>";
+            str2.match(/<ul>([\s\S]+?)<\/ul>/g);
+            console.log(RegExp.$1); //<li>aaa</li><li>bbb</li>
+
+
+            console.error('url地址替换');
+            var str1 = "aaaaahttp://www.baidu.com bbbbb http://www.1212baidu.com cccc";
+            var reg = /http:\/\/(\w*\.\w*)*/g;
+             // var reg = /http:\/\/\w*(\.\w*)+/ig;
+            var str1=str1.replace(reg,function(v){
+                 console.log(v);
+                return '<a href=\''+v+'\'>'+v+'<\/a>';
+            });
+            console.log(str1);
+            // aaaaa<a href='http://www.baidu.com'>http://www.baidu.com</a> bbbbb
+            
+
+            console.error('XML模式匹配');
+            var str = '<recipe><recipename>ice cream</recipename><ingredlist><listitem><quantity>3s df d</quantity><itemdescription>chocolate</itemdescription></listitem><listitem><quantity>5</quantity><itemdescription>nuts and descious pie</itemdescription></listitem><listitem><quantity>1</quantity><itemdescription>apple and fruit</itemdescription></listitem></ingredlist></recipe>';
+            var modelStr = '<listitem><quantity></quantity></listitem>';
+            var reg = /<listitem>[\s\S]*?<quantity>[\s\S]*?<\/quantity>[\s\S]*?<\/listitem>/g;// [\s\S]*空白和非空白的所有字符，?表示采用非贪婪模式
+            var indexArr = [];
+            var str1=str.replace(reg,function(a, b){
+                 console.log(a);
+                 indexArr.push(b);// 匹配出的每一项的索引
+            });
+            var str3=modelStr.replace(/></g,function(v){
+                 return '>' + '[\\s\\S]*?' + '<';
+            });
+            var regexp = new RegExp(str3, "g");
+            console.log(regexp);
+            var str2=str.match(regexp).length;
+            console.log(indexArr);
+            console.log(str2);
+            console.log(str3);
+            var pre=0;
+            var reg = /<\w[\s\S]*?>/g;// 匹配每一个不以/开头的xml标签
+            var len = 0;
+            for(var i =0; i<indexArr.length; i++){
+                var index = indexArr[i];
+                var subStr = str.substr(pre, index-pre);// 匹配出的每一项之间的字符串
+                pre = index;
+                console.log(subStr);
+                len += subStr.match(reg).length;
+                console.log(len+1);
+            }
+        </script>
+    </body>
+</html>

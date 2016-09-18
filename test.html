@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <title>A Demo</title>
+        <meta  name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+        <script src="jquery-3.1.0.min.js"></script>
+    </head>
+    <style type="text/css">
+        body, div{margin:0;padding:0;}
+
+        .up{
+            background: yellow;
+            width: 100%;
+            height: 20px;
+            margin-bottom: 20px;
+        }
+        .right{
+            width: 100px;
+            height: 100%;
+            background: gray;
+            display: inline-block;
+        }
+        .down{
+            background: purple;
+            width: 100%;
+            height: 20px;
+        }
+        .left{
+            width: 100px;
+            height: 100%;
+            background: red;
+            display: inline-block;
+            float: left;
+            margin-top: 20px;
+        }
+        .containerClass{
+            float: left;
+            display: inline-block;
+            width: 100px;
+            height: 60px;
+            padding-top: 15px;
+            padding-right: 10px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            border-top: 15px;
+            border-right: 10px;
+            border-bottom: 15px;
+            border-left: 20px;
+            border-style: solid;
+            margin-top: 15px;
+            margin-right: 10px;
+            margin-bottom: 15px;
+            margin-left: 20px;
+            background: green;
+            border-color: #00f6ff;
+            position: relative;
+        }
+        #containerId{
+            background: red;
+        }
+        .clear{
+            zoom:1;
+        }
+        .clear:after{
+            clear:both;
+            content:'.';
+            display:block;
+            width: 0;
+            height: 0;
+            visibility:hidden;
+        }
+        //居中一个浮动元素，设置宽高，父元素相对定位，子元素绝对定位，设置子元素的margin和left+right=50%；
+        .inDic{
+            width:40px ;
+            height:20px;
+            margin: -10px 0 0 -20px;
+            position: absolute;
+            left:50%;
+            top:50%;
+            background: yellow;
+        }
+        .imgContainer{
+            width: 300px;
+            height: 300px;
+            background: gray;
+            text-align: center;
+            display: table;
+        }
+        .imgContainer span{
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .ra1, .ra2, .ra3{
+            float: left;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+        .ra1{
+            background: red;
+        }
+        .ra2{
+            position: relative;
+            left: 20px;
+            top: 20px;
+            background: yellow;
+        }
+        .ra3{
+            position: absolute;
+            background: green;
+            left: 20px;
+            top: 20px;
+        }
+    </style>
+    <body>
+        <div class="up">up</div>
+        <div class="clear">
+            <div class="left">left</div>
+            <div class ="containerClass" >
+                css 盒模型
+                <div class="inDic">in</div>
+            </div>
+            <div class="right">right</div>
+        </div>
+        <div class="down">relative absolute测试</div>
+        <div class="clear" style="position:relative;">
+            <div class="ra1">1</div>
+            <div class="ra2">12</div>
+            <div class="ra3">123</div>
+        </div>
+        <div class="down">down2</div>
+        <div>
+            <span style="width:200px;height:200px;background:red;">s</span>
+        </div>
+
+        <ul id="test"> 
+            <li>这是第一条</li>
+            <li>这是第二条</li>
+            <li>这是第三条</li> 
+        </ul>
+        <div>图片水平垂直居中</div>
+        <div class="imgContainer"><span><img src="./1.jpg"/></span></div>
+        
+        <script type="text/javascript">
+        
+
+
+        var inDic = $(".inDic")[0];
+        var containerClass = $(".containerClass")[0];
+            inDic.addEventListener("click", function(){
+                console.log("capture inDic");
+            },true);
+            inDic.addEventListener("click", function(){
+                console.log("bubble inDic");
+            },false);
+            containerClass.addEventListener("click", function(){
+                console.log("capture containerClass");
+            },true);
+            containerClass.addEventListener("click", function(){
+                console.log("bubble containerClass");
+            },false);
+            
+
+            function person(){
+                
+            }
+            person.prototype = {
+                na: 'nana',
+                printName: function(){
+                        console.log(this.name);
+                },
+                printPid: function(){
+                        console.log(this.pid);
+                }
+            }
+            function student(name, pid){
+                    this.name = name;
+                    this.pid = pid;
+            }
+            
+            student.prototype=new person();
+            student.prototype.constructor = student;
+
+            student.prototype.printStu=function(){
+                        console.log(this.name+','+this.pid);
+                
+            }
+            var student1 =new student("xiaoming", '12');
+            student1.printPid(); 
+            // console.log(Object.getPrototypeOf(student));
+            console.log(student1.__proto__);
+            
+            
+
+            function bubbleSort(arr){
+                if(Object.prototype.toString.call(arr)==='[object Array]'){
+                    var len = arr.length;
+                    for(var i=0;i<len-1;i++){
+                        var flag = true;
+                        for(var k=len-1;k>i;k--){
+                            if(arr[k]<arr[k-1]){
+                                var tmp=arr[k-1];
+                                arr[k-1]=arr[k];
+                                arr[k]=tmp;
+                                flag=false;
+                            }
+                        }
+                        if(flag)
+                            return arr;
+                    }
+                    return arr;
+                }
+                return arr;
+            }
+            var arr=[1,2,5,3,4];
+            console.log(bubbleSort(arr));
+
+            // 正则表达式联系
+        </script>
+    </body>
+</html>

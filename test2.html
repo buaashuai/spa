@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+    </head>
+   <style type="text/css">
+       .logo{
+        width: 50px;
+        height: 50px;
+        border: 1px solid red;
+        display: inline-block;
+       }
+       .userName{
+        width: 80px;
+        height: 30px;
+        display: inline-block;
+        bottom: 0px;
+        right: 0px;
+        position: absolute;
+        border: 1px solid red;
+       }
+       .clear{
+        zoom:1;
+       }
+       .clear:after{
+        clear: both;
+        content: .;
+        display: block;
+        visibility: hidden;
+        width: 1px;
+        height: 1px;
+       }
+       .content{
+        height: 300px;
+        margin-right: 202px;
+        border: 1px solid purple;
+       }
+       .aside{
+        width: 200px;
+        float: right;
+        border: 1px solid blue;
+       }
+       .header{
+        border: 1px solid green;
+        position: relative;
+       }
+       .footer{
+        border: 1px solid black;
+        text-align: center;
+       }
+    </style>
+    <body>
+        <div>
+           <header class="clear header">
+                <div class="logo">logo</div>
+                <div class="userName">用户名</div>
+           </header>
+           <div class="clear" >
+                <aside class="aside">aside-定宽200px</aside>
+                <div class="content">content</div>
+           </div>
+           <footer class="footer">footer</footer>
+        
+           </div>
+    </body>
+    <script type="text/javascript">
+        var data = {a: 1, b: 2, c: 3, d: 4};
+        var obj = Object.keys(data).filter(function(x) { return data[x]>2});
+        console.log(obj);
+        function objF(name){
+            if(name){ this.name = name;}
+            return this;  
+        }
+        objF.prototype.name="name2";
+        var a= objF("name1");
+        var b = new objF;
+        console.log(a);
+        console.log(b);
+        function getNthFibonacci(count) {
+            var ans=[1,1];
+            if(count < 2)
+                return ans[count];
+            else{
+                var i, k;
+            }
+        }
+        console.log(getNthFibonacci(6));
+
+        function showMoney( ) {
+            console.log(this.money);
+        };
+        var personA = new Object;
+        var personB = new Object;
+        personA.money= "100";
+        personB.money= "150";
+        personA.showMoney= showMoney;
+        personB.showMoney= showMoney;
+        personA.showMoney(); //"100"
+        personB.showMoney(); //"150"
+
+        var arr1 = ['a','b','c','d','e'];
+        var arr2 = arr1.splice(1,2,'newvalue');
+        console.log(arr2);
+    </script>
+</html>
