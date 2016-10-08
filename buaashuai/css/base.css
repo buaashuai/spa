@@ -1,0 +1,31 @@
+html,
+body {
+    background: #f8f8f8;
+    width: 100%;
+    height: 100%;
+}
+
+[data-href] {
+    cursor: pointer;
+}
+html,body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{font:16px"宋体","Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;}
+a{color:#2d374b;text-decoration:none}
+a:hover{color:#cd0200;text-decoration:underline}
+em{font-style:normal}
+li{list-style:none}
+img{border:0;vertical-align:middle}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+
+.clear{
+    zoom:1;
+}
+.clear:after{
+    clear:both;
+    content:'.';
+    display:block;
+    width: 0;
+    height: 0;
+    visibility:hidden;
+}

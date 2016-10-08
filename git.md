@@ -17,6 +17,8 @@
 
 - git branch -d xxx   // 删除本地分支
 
+-  git rm -rf --cached .idea   // 更新了.ignore文件之后，删除之前提交的文件
+
 - git log  // 查看提交日志
 
 - git config -l   // 查看git的配置

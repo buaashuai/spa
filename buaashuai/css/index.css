@@ -1,0 +1,41 @@
+body {
+    background: url("../image/bg.gif");
+}
+.title{
+    color: white;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+.mainContainer{
+        width: 95%;
+    margin: 0 auto;
+}
+.galleryContainer{
+    display:-moz-box; 
+    display:-webkit-box; 
+    display:-o-box; 
+    display:box;
+    -moz-box-align:end; 
+    -webkit-box-align:end; 
+    -o-box-align:end; 
+    box-align:end; 
+    overflow: hidden;
+        margin-bottom: 10px;
+}
+.imgContainer{
+    -moz-box-flex: 1; 
+    -webkit-box-flex: 1; 
+    box-flex: 1;
+      
+}
+.imgContainer img{
+    max-height: 200px;
+    max-width: 100%;
+        border: 3px solid white;
+}
+.welcome{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
