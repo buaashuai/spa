@@ -1,4 +1,5 @@
 - test.html：图片水平垂直居中，清除浮动，居中一个浮动元素，事件冒泡+事件捕获，继承，冒泡排序
 - test2.html：对象的filter，splice
 - test_reg.html：正则表达式
-- git.md 常用的git命令
+- git.md：常用的git命令
+- hack.js和test_黑科技.html：浏览器执行脚本，懒人秒杀使用
