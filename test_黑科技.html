@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <title>A Demo</title>
+        <meta  name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+        <script src="./hack.js"></script>
+    </head>
+    <style type="text/css">
+        body, div{margin:0;padding:0; background-color: #000000;}
+    </style>
+    <body>
+        <div id="my-widget"></div>
+        <template id="wgTemplate">
+          <style type="text/css">
+            .up{
+                margin: 0 auto;
+                font-size: 45px;
+                color: white;
+                text-align: center;
+                padding: 50px;
+            }
+          </style>
+          <div class="up">黑科技</div>
+        </template>
+        <div class="up" onclick="testClick()" style="color:white">黑科技2</div>
+        <div onclick="test()" style="color:white">test</div>
+
+        <script type="text/javascript">
+         // 创建shadow-root
+            function createShadowRoot(){
+                var host = document.querySelector("#my-widget");
+                var tp = document.querySelector("#wgTemplate");
+                var clone = document.importNode(tp.content, true);
+                host.createShadowRoot().appendChild(clone);
+            }
+            createShadowRoot();
+            function testClick(){
+                console.log('click');
+            }
+        </script>
+        <script type="text/javascript">
+            function test(){
+                console.log($(".up")[0]);
+                $(".up").click();
+            }
+        </script>
+    </body>
+</html>
