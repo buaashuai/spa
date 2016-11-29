@@ -3,3 +3,4 @@
 - test_reg.html：正则表达式
 - git.md：常用的git命令
 - hack.js和test_黑科技.html：浏览器执行脚本，懒人秒杀使用
+- css_animation.html：CSS中transition、transform、animation、filter的使用
