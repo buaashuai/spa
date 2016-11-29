@@ -1,0 +1,273 @@
+body,
+div {
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    zoom: 1;
+}
+
+.clear:after {
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.transitionContainer,
+.transition2DContainer,
+.transition3DContainer {
+    width: 400px;
+    height: 500px;
+    position: relative;
+    border: 1px solid gray;
+    margin: 10px auto 0px auto;
+    text-align: center;
+}
+
+.title {
+    background: blue;
+    color: white;
+    padding: 0 10px;
+}
+
+
+/*
+transition:  [ <transition-property> ||
+               <transition-duration> ||
+               <transition-timing-function> ||
+               <transition-delay> ]
+*/
+
+.easeIn {
+    width: 50px;
+    height: 50px;
+    border: 1px red solid;
+    transition: all 1s ease-in-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.easeIn:hover {
+    left: 20px;
+    background: red;
+}
+
+.normal,
+.eam1,
+.eam2 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+
+.normal {
+    background: red;
+    transition: all 1s ease-in-out;
+}
+
+.eam1 {
+    background: green;
+    transition-property: top, left;
+    transition-duration: 1s, 1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s, 1s;
+}
+
+.eam2 {
+    background: blue;
+    transition-property: top, left, border-radius, background-color;
+    transition-duration: 2s, 1s, 0.5s, 0.5s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s, 0.5s, 1s, 1.5s;
+}
+
+.transitionContainer:hover .normal {
+    top: 25px;
+    left: 25px;
+}
+
+.transitionContainer:hover .eam1 {
+    top: 25px;
+    left: 375px;
+}
+
+.transitionContainer:hover .eam2 {
+    top: 375px;
+    left: 375px;
+    border-radius: 0;
+    background-color: orange;
+}
+
+
+/*
+    transform 测试
+*/
+
+.transition2DContainer div:not(.clear) {
+    width: 70px;
+    height: 150px;
+    margin: 10px 20px;
+    padding: 10px;
+    border: 1px red solid;
+    float: left;
+}
+
+
+/*
+    skew(xdeg),x>0逆时针歪斜，x<=顺时针歪斜
+*/
+
+.skew {
+    transform: skew(35deg);
+}
+
+
+/*
+    scale(x, y),x表示水平缩放，y表示垂直缩放
+*/
+
+.scale {
+    transform: scale(1, 0.5);
+}
+
+
+/*
+    rotate(xdeg),x>0顺时针旋转，x<逆时针旋转
+*/
+
+.rotate {
+    transform: rotate(45deg);
+}
+
+
+/*
+    translate(x, y),x表示水平位移，y表示垂直位移
+*/
+
+.translate {
+    transform: translate(10px, 20px);
+}
+
+.mixed {
+    transform: skew(30deg) scale(1.1, 1.1) rotate(40deg) translate(10px, 20px);
+}
+
+#hoverMe {
+    width: 50px;
+    height: 50px;
+    background: gold;
+    float: left;
+    border-radius: 50%;
+    border: none;
+    text-align: center;
+    line-height: 50px;
+    transition: all .5s ease-in-out;
+}
+
+#hoverMe:hover {
+    border: 2px green solid;
+    transform: scale(1.1, 1.1) rotate(360deg);
+}
+
+.rotateX,
+.rotateY,
+.rotateZ {
+    width: 70px;
+    height: 70px;
+    margin: 10px 20px;
+    padding: 10px;
+    border: 1px blue solid;
+    float: left;
+    transition: all 2s ease-in-out;
+}
+
+.transition3DContainer:hover .rotateX {
+    transform: rotateX(180deg);
+}
+
+.transition3DContainer:hover .rotateY {
+    transform: rotateY(180deg);
+}
+
+.transition3DContainer:hover .rotateZ {
+    transform: rotateZ(180deg);
+}
+
+
+/*
+    3D魔方
+*/
+
+#cubeCarousel {
+    -webkit-perspective: 800;
+    perspective: 800;
+    perspective-origin: 50% 100px;
+    width: 200px;
+    height: 100px;
+    margin: 20px auto 0 auto;
+}
+
+#cubeCarousel #cubeSpinner {
+    position: relative;
+    margin: 0 auto;
+    width: 200px;
+    height: 100px;
+    transform-style: preserve-3d;
+    transform-origin: 50% 100px 0;
+    transition: all 1.0s ease-in-out;
+}
+
+#cubeCarousel .face {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    padding: 0px;
+}
+
+#cubeSpinner .one {
+    transform: translateZ(100px);
+    background: red;
+}
+
+#cubeSpinner .two {
+    transform: rotateY(90deg) translateZ(100px);
+    background: gold;
+}
+
+#cubeSpinner .three {
+    transform: rotateY(180deg) translateZ(100px);
+    background: green;
+}
+
+#cubeSpinner .four {
+    transform: rotateY(-90deg) translateZ(100px);
+    background: deepskyblue;
+}
+
+#changeCube {
+    width: 150px;
+    height: 50px;
+    background: lightblue;
+    color: black;
+    z-index: 10;
+    text-align: center;
+    line-height: 50px;
+    margin: 10px auto 0 auto;
+}
+
+#changeCube:hover {
+    box-shadow: 0px 0px 12px 6px lightcoral;
+    cursor: pointer;
+}

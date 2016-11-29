@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <title>A Demo</title>
+        <meta  name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+        
+    </head>
+    <style type="text/css">
+        *{ margin: 0; padding:0;}
+        body{-webkit-tap-highlight-color: rgba(0,0,0,0); font-family: "微软雅黑"}
+        h1{ width: 100%; font-size: 1.5em; text-align: center; line-height: 3em; color:#47c9af; }
+        #audio{ width: 100%;}
+        #control{ width: 150px; height: 150px; line-height: 150px; text-align: center; border-radius: 200px; border:none; color:#fff; margin-top: -75px; margin-left:-75px; left:50%; top:50%; position: absolute; box-shadow: #888 0 0 8px;}
+        .color_gray{ background: #e4e4e4}
+        .hide{ display: none;}
+        .show{ display: block;}
+        .play{ background:  #f06060;}
+        .pause{ background:skyblue}
+        /*进度条样式*/
+        .progressBar{ width: 100%; height: 10px;margin: 30px auto 30px auto; position:absolute; left: 0; bottom: 35px;}
+        .progressBar div{ position: absolute;}
+        .progressBar .progressBac{ width: 100%; height: 10px;  left: 0; top:0; background: #e4e4e4;}
+        .progressBar .speed{width: 100%; height: 10px; left: -100%; background: #f06060; }
+        .progressBar .drag{ width: 30px; height: 30px; left: 0; top:-10px;  background: skyblue; opacity: 0.8; border-radius: 50px; box-shadow: #fff 0 0 5px;}
+        /*时间样式*/
+        #time{ width: 100%; height: 20px;position: absolute; left: 0; bottom:30px; color:#888;}
+        .tiemDetail{ position: absolute; right:10px; top:0;}
+        #songInfo{overflow: hidden; width: 200px; height:50px; line-height: 50px; text-align: center; color:#34495e;   margin-top: -25px; margin-left:-100px; left:50%; top:70%; position: absolute;}
+        .shareImg{ position: absolute; left: 100000px;}
+
+        .clear{
+            zoom:1;
+        }
+        .clear:after{
+            clear:both;
+            content:'.';
+            display:block;
+            width: 0;
+            height: 0;
+            visibility:hidden;
+        }
+    </style>
+    <body>
+        <h1>html5 audio 音频播放demo</h1>
+        <audio id="audio" src=""  loop="false" preload="auto"></audio>
+        <button id="control" class="">loading</button>
+
+        <section class="progressBar">
+            <div class="progressBac"></div>
+            <div class="speed" id="speed"></div>
+            <div class="drag" id="drag"></div>
+        </section>
+        <div id="time"><div class="tiemDetail"><span class="currentTime" id="currentTime">00:00</span>/<span class="allTime" id="allTime">00:00</span></div></div>
+
+        <div id="songInfo">没时间-Leinov<div class="shareImg"><img src="img/html5audio.jpg" alt=""></div></div>
+
+
+        <script src="jquery.1.11.1.min.js"></script>
+        <script src="music.js"></script>
+    </body>
+</html>
