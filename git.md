@@ -87,3 +87,14 @@ git pull --rebase origin master 或者 git rebase develop
 然后将master分支从develop分支创建起的所有改变的补丁，依次打上。如果打补丁的过程没问题，rebase就搞定了
 如果打补丁的时候出现了问题，就会提示你处理冲突。处理好了，可以运行git rebase –continue继续直到完成
 如果你不想处理，你还是有两个选择，一个是放弃rebase过程（运行git rebase –abort），另一个是直接用test分支的取代当前分支的（git rebase –skip）。
+
+删除一个submodule
+
+1.删除 .gitsubmodule中对应submodule的条目
+2.删除 .git/config 中对应submodule的条目
+3.执行 git rm --cached {submodule_path}。注意，路径不要加后面的“/”。例如：你的submodule保存在 supports/libs/websocket/ 目录。执行命令为： git rm --cached supports/libs/websocket 
+更新submodule的URL
+
+1.更新 .gitsubmodule中对应submodule的条目URL
+2.更新 .git/config 中对应submodule的条目的URL
+3.执行 git submodule sync
